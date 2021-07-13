@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Breadcrumbs.module.css';
+import { Wrapper, BreadcrumbNav, BreadcrumbList } from './styles';
 import BreadcrumbsItem from './breadcrumbsItems/BreadcrumbsItem';
 
 interface BreadCrumbsData {
@@ -14,9 +14,9 @@ interface CurrentData {
 
 const Breadcrumbs: React.FC<BreadCrumbsData> = ({ breadcrumbs }) => {
   return (
-    <div className={`${styles.breadcrumbs} container`}>
-      <nav className={styles.breadcrumbsNav}>
-        <ol className={styles.breadcrumbsList}>
+    <Wrapper className="container">
+      <BreadcrumbNav>
+        <BreadcrumbList>
           {breadcrumbs.map((breadcrumb, index) => (
             <BreadcrumbsItem
               key={breadcrumb.id}
@@ -24,9 +24,9 @@ const Breadcrumbs: React.FC<BreadCrumbsData> = ({ breadcrumbs }) => {
               active={breadcrumbs.length - 1 === index}
             />
           ))}
-        </ol>
-      </nav>
-    </div>
+        </BreadcrumbList>
+      </BreadcrumbNav>
+    </Wrapper>
   );
 };
 

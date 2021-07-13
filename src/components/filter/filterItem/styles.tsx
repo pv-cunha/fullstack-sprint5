@@ -1,4 +1,6 @@
-.listBtn {
+import styled from 'styled-components';
+
+export const ListBtn = styled.button`
   border: none;
   border-radius: 4px;
 
@@ -13,23 +15,23 @@
   transition: background 0.2s;
 
   display: flex;
-}
 
-.listBtn:hover {
-  background: #eee;
-}
+  &:hover {
+    background: #eee;
+  }
+`;
 
-.listName {
+export const ListName = styled.p`
   text-transform: uppercase;
   font-size: 0.7rem;
   line-height: 1.75;
-}
+`;
 
-.listSVG {
+export const ListImg = styled.img`
   display: inline-block;
   width: 20px;
   height: 20px;
   vertical-align: middle;
 
   margin-left: 0.5rem;
-}
+`;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ProductItem.module.css';
+import { Card, CardDescription, CardImg, CardPrice } from './styles';
 
 interface ProductItemData {
   name: string;
@@ -15,18 +15,16 @@ interface ProductData {
 const ProductItem: React.FC<ProductData> = ({ product }) => {
   const { name, image, price, sku } = product;
   return (
-    <li className={styles.listItem} aria-labelledby={`${image}-${sku}`}>
-      <div className={styles.card}>
+    <li aria-labelledby={`${image}-${sku}`}>
+      <Card>
         <figure>
-          <img src={image} alt={name} className={styles.img} />
-          <figcaption className={styles.description} id={`${image}-${sku}`}>
-            {name}
-          </figcaption>
+          <CardImg src={image} alt={name} />
+          <CardDescription id={`${image}-${sku}`}>{name}</CardDescription>
           <span>
-            <p className={styles.price}>R$ {price}</p>
+            <CardPrice>R$ {price}</CardPrice>
           </span>
         </figure>
-      </div>
+      </Card>
     </li>
   );
 };

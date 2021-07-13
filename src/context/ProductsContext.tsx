@@ -99,7 +99,7 @@ const ProductsProvider: React.FC = ({ children }) => {
       json = null;
       addAlert({ text: err.message });
     } finally {
-      setFilters(json.filter);
+      setFilters(json.filters);
     }
   }, [addAlert]);
 

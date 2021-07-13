@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './Filter.module.css';
+
+import { FilterSection, FilterList } from './styles';
 import FilterItem from './filterItem/FilterItem';
 
 interface FiltersData {
@@ -13,13 +14,13 @@ interface FilterData {
 
 const Filter: React.FC<FiltersData> = ({ filters }) => {
   return (
-    <section className={`${styles.filter} container`}>
-      <ul className={styles.filterList}>
+    <FilterSection className={`container`}>
+      <FilterList>
         {filters.map((filter) => (
           <FilterItem key={filter.id} label={filter.label} />
         ))}
-      </ul>
-    </section>
+      </FilterList>
+    </FilterSection>
   );
 };
 

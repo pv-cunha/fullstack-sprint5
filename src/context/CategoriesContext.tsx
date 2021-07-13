@@ -9,8 +9,8 @@ interface CategoriesData {
 
 interface CurrentData {
   id: string;
-  name: string;
   link: string;
+  name: string;
 }
 
 interface CategoriesContextData {
@@ -71,7 +71,7 @@ const CategoriesProvider: React.FC = ({ children }) => {
     let json;
 
     try {
-      response = await fetch('http://localhost:3000/data/products.json');
+      response = await fetch('http://localhost:3000/data/categories.json');
 
       if (!response.ok) {
         throw new Error('Erro ao carregar os dados das breadcrumbs!');

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Products.module.css';
+import { ProductsList } from './styles';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import Filter from '../components/filter/Filter';
 import ProductItem from '../components/productItem/ProductItem';
@@ -20,7 +20,7 @@ const Products: React.FC = () => {
       {filters && <Filter filters={filters} />}
 
       <section>
-        <ul className={styles.productsList}>
+        <ProductsList>
           {filtered.length > 0
             ? filtered.map((product) => (
                 <ProductItem key={product.sku} product={product} />
@@ -28,7 +28,7 @@ const Products: React.FC = () => {
             : products.map((product) => (
                 <ProductItem key={product.sku} product={product} />
               ))}
-        </ul>
+        </ProductsList>
       </section>
     </main>
   );

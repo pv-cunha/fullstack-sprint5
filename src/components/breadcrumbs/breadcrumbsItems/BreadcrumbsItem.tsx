@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './BreadcrumbsItem.module.css';
+import { Anchor, Separator, BreadcrumbList } from './styles';
 
 interface BreadCrumbItemData {
   breadcrumb: BreadCrumbData;
@@ -18,14 +18,12 @@ const BreadcrumbsItem: React.FC<BreadCrumbItemData> = ({
   const { link, name } = breadcrumb;
 
   return (
-    <li>
-      <a className={`${styles.link} ${active && styles.active}`} href={link}>
+    <BreadcrumbList>
+      <Anchor className={`${active && 'active'}`} href={link}>
         {name}
-      </a>
-      <span className={`${styles.separator} ${active && styles.display}`}>
-        /
-      </span>
-    </li>
+      </Anchor>
+      <Separator className={`${active && 'active'}`}>/</Separator>
+    </BreadcrumbList>
   );
 };
 

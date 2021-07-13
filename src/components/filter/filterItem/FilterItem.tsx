@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './FilterItem.module.css';
+
+import { ListBtn, ListImg, ListName } from './styles';
 
 interface FilterItemData {
   label: string;
@@ -7,11 +8,11 @@ interface FilterItemData {
 
 const FilterItem: React.FC<FilterItemData> = ({ label }) => {
   return (
-    <li className={styles.listItem}>
-      <button className={styles.listBtn}>
-        <p className={styles.listName}>{label}</p>
-        <img src="assets/filter.svg" alt="" className={styles.listSVG} />
-      </button>
+    <li>
+      <ListBtn>
+        <ListName>{label}</ListName>
+        <ListImg src="assets/filter.svg" alt="" />
+      </ListBtn>
     </li>
   );
 };
