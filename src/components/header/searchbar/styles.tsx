@@ -1,4 +1,6 @@
-.searchbar {
+import styled from 'styled-components';
+
+export const Wrapper = styled.div`
   background: #fff;
   color: #d3d3d3;
 
@@ -15,13 +17,13 @@
   align-items: center;
 
   transition: border-color 0.2s;
-}
 
-.searchbar:hover {
-  border-color: #333;
-}
+  &:hover {
+    border-color: #333;
+  }
+`;
 
-.searchbarInput {
+export const Input = styled.input`
   display: block;
 
   width: 100%;
@@ -32,18 +34,18 @@
 
   font-size: 1rem;
   line-height: 1.75;
-}
 
-.searchbarInput::placeholder {
-  color: #d3d3d3;
-}
+  &::placeholder {
+    color: #d3d3d3;
+  }
 
-.searchbarInput:hover,
-.searchbarInput:focus {
-  outline: none;
-}
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+`;
 
-.searchbarSVG {
+export const InputSVG = styled.img`
   fill: #d3d3d3;
 
   height: 25px;
@@ -51,4 +53,4 @@
 
   margin-right: 0.5rem;
   margin-left: 0.5rem;
-}
+`;

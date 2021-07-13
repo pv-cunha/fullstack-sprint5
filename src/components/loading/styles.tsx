@@ -1,4 +1,6 @@
-.overlay {
+import styled from 'styled-components';
+
+export const Overlay = styled.div`
   background: rgba(242, 243, 245, 0.8);
   position: fixed;
   top: 0;
@@ -11,19 +13,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+`;
 
-.loading {
+export const Spinner = styled.span`
   width: 25px;
   height: 25px;
   border-radius: 50%;
   border: 10px solid #333;
   border-right-color: transparent;
   animation: loading 1s infinite;
-}
 
-@keyframes loading {
-  to {
-    transform: rotate(360deg);
+  @keyframes loading {
+    to {
+      transform: rotate(360deg);
+    }
   }
-}
+`;

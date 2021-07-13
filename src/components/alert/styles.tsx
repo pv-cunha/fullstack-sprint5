@@ -1,4 +1,6 @@
-.alert {
+import styled from 'styled-components';
+
+export const AlertMessage = styled.p`
   position: fixed;
   top: 5px;
   right: 10px;
@@ -15,4 +17,4 @@
   border-radius: 4px;
 
   text-align: center;
-}
+`;

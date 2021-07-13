@@ -1,6 +1,6 @@
 import React from 'react';
 import { useProducts } from '../../../context/ProductsContext';
-import styles from './Searchbar.module.css';
+import { Input, InputSVG, Wrapper } from './styles';
 
 const Searchbar: React.FC = () => {
   const { filtered, filterProducts, clearFilter } = useProducts();
@@ -22,20 +22,19 @@ const Searchbar: React.FC = () => {
   };
 
   return (
-    <div className={styles.searchbar}>
-      <img className={styles.searchbarSVG} src="assets/search.svg" alt="" />
-      <label htmlFor="searchbar__input" className="escondeVisualmente">
+    <Wrapper>
+      <InputSVG src="assets/search.svg" alt="" />
+      <label htmlFor="searchbar" className="escondeVisualmente">
         O que você está procurando ?
       </label>
-      <input
-        className={styles.searchbarInput}
-        id="searchbar__input"
+      <Input
+        id="searchbar"
         type="search"
         placeholder="O que você está procurando?"
         ref={text}
         onChange={handleChange}
       />
-    </div>
+    </Wrapper>
   );
 };
 

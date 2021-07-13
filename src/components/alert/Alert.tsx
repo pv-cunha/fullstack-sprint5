@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Alert.module.css';
+import { AlertMessage } from './styles';
 
 interface AlertContainerProps {
   alertMessages: AlertProps[];
@@ -16,9 +16,7 @@ const Alert: React.FC<AlertContainerProps> = ({ alertMessages }) => {
     <div>
       {alertMessages.length > 0 &&
         alertMessages.map((alert) => (
-          <p key={alert.id} className={styles.alert}>
-            {alert.text}
-          </p>
+          <AlertMessage key={alert.id}>{alert.text}</AlertMessage>
         ))}
     </div>
   );

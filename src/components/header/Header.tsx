@@ -1,16 +1,16 @@
 import React from 'react';
-import styles from './Header.module.css';
+import { HeaderStyled } from './styles';
 import Logo from './logo/Logo';
 import Searchbar from './searchbar/Searchbar';
 import Menu from './menu/Menu';
 
 const Header: React.FC = () => {
   return (
-    <header className={styles.header}>
+    <HeaderStyled>
       <Logo />
       <Searchbar />
       <Menu />
-    </header>
+    </HeaderStyled>
   );
 };
 

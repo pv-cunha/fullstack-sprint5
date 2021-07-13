@@ -1,48 +1,42 @@
 import React from 'react';
-import styles from './Logo.module.css';
+import {
+  Content,
+  ContentMobile,
+  ButtonMobile,
+  DrawerClose,
+  LogoTitle,
+  Mobile,
+  Desktop,
+} from './styles';
 
 const Logo: React.FC = () => {
   return (
-    <div className={styles.logo}>
-      <div className={styles.contentMobile}>
-        <button
-          className={`${styles.mobileDrawer} ${styles.drawerOpen}`}
-          type="button"
-        >
+    <Content>
+      <ContentMobile>
+        <ButtonMobile type="button">
           <img src="assets/menu.svg" alt="Botão para abrir o menu navegação" />
-          <p className={styles.logoTitle}>menu</p>
-        </button>
+          <LogoTitle>menu</LogoTitle>
+        </ButtonMobile>
 
-        <button
-          className={`${styles.mobileDrawer} ${styles.drawerClose}`}
-          type="button"
-        >
+        <DrawerClose type="button">
           <img
             src="assets/close.svg"
             alt="Botão para fechar o menu navegação"
           />
-          <p className={styles.logoTitle}>fechar</p>
-        </button>
-      </div>
+          <LogoTitle>fechar</LogoTitle>
+        </DrawerClose>
+      </ContentMobile>
 
-      <div className={styles.mobile}>
-        <img
-          className={styles.mobileLogo}
-          src="assets/rchlo.svg"
-          alt="Home Riachuelo"
-        />
-      </div>
+      <Mobile>
+        <img src="assets/rchlo.svg" alt="Home Riachuelo" />
+      </Mobile>
 
-      <div className={styles.desktop}>
-        <img
-          className={styles.desktopLogo}
-          src="assets/riachuelo.svg"
-          alt="Home Riachuelo"
-        />
-      </div>
+      <Desktop>
+        <img src="assets/riachuelo.svg" alt="Home Riachuelo" />
+      </Desktop>
 
       <span></span>
-    </div>
+    </Content>
   );
 };
 

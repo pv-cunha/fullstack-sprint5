@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Menu.module.css';
+import { MenuNav, MenuList } from './styles';
 import MenuItem from './menuItem/MenuItem';
 import { useCategories } from '../../../context/CategoriesContext';
 
@@ -7,14 +7,14 @@ const Menu: React.FC = () => {
   const { categories } = useCategories();
 
   return (
-    <nav className={styles.menuNav}>
-      <ul className={styles.menuList}>
+    <MenuNav>
+      <MenuList>
         {categories &&
           categories.map((category) => (
             <MenuItem key={category.id} category={category} />
           ))}
-      </ul>
-    </nav>
+      </MenuList>
+    </MenuNav>
   );
 };
 

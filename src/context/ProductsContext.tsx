@@ -73,8 +73,6 @@ const ProductsProvider: React.FC = ({ children }) => {
       }
 
       json = await response.json();
-
-      console.log(json);
     } catch (err) {
       json = null;
       addAlert({ text: err.message });

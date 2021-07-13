@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './MenuItem.module.css';
+import { MenuItemList } from './styles';
 
 interface CategoryData {
   category: CategoryItemData;
@@ -14,11 +14,11 @@ const MenuItem: React.FC<CategoryData> = ({ category }) => {
   const { label, link } = category;
 
   return (
-    <li className={styles.menuItem}>
+    <MenuItemList>
       <a href={link}>
         <span>{label}</span>
       </a>
-    </li>
+    </MenuItemList>
   );
 };
 
