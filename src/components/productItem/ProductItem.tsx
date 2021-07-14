@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardDescription, CardImg, CardPrice } from './styles';
+import { Link } from 'react-router-dom';
 
 interface ProductItemData {
   name: string;
@@ -18,7 +19,9 @@ const ProductItem: React.FC<ProductData> = ({ product }) => {
     <li aria-labelledby={`${image}-${sku}`}>
       <Card>
         <figure>
-          <CardImg src={image} alt={name} />
+          <Link to={`/product/${sku}`}>
+            <CardImg src={image} alt={name} />
+          </Link>
           <CardDescription id={`${image}-${sku}`}>{name}</CardDescription>
           <span>
             <CardPrice>R$ {price}</CardPrice>

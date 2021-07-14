@@ -8,6 +8,7 @@ import {
   Mobile,
   Desktop,
 } from './styles';
+import { Link } from 'react-router-dom';
 
 const Logo: React.FC = () => {
   return (
@@ -28,11 +29,15 @@ const Logo: React.FC = () => {
       </ContentMobile>
 
       <Mobile>
-        <img src="assets/rchlo.svg" alt="Home Riachuelo" />
+        <Link to="/">
+          <img src="assets/rchlo.svg" alt="Home Riachuelo" />
+        </Link>
       </Mobile>
 
       <Desktop>
-        <img src="assets/riachuelo.svg" alt="Home Riachuelo" />
+        <Link to="/">
+          <img src="assets/riachuelo.svg" alt="Home Riachuelo" />
+        </Link>
       </Desktop>
 
       <span></span>

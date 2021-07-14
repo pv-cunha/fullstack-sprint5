@@ -3,7 +3,7 @@ import { Anchor, Separator, BreadcrumbList } from './styles';
 
 interface BreadCrumbItemData {
   breadcrumb: BreadCrumbData;
-  active?: boolean;
+  active: boolean;
 }
 
 interface BreadCrumbData {
@@ -19,10 +19,10 @@ const BreadcrumbsItem: React.FC<BreadCrumbItemData> = ({
 
   return (
     <BreadcrumbList>
-      <Anchor className={`${active && 'active'}`} href={link}>
+      <Anchor active={active} href={link}>
         {name}
       </Anchor>
-      <Separator className={`${active && 'active'}`}>/</Separator>
+      <Separator active={active}>/</Separator>
     </BreadcrumbList>
   );
 };
