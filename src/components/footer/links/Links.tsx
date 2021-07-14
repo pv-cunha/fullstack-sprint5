@@ -1,203 +1,197 @@
 import React from 'react';
-import styles from './Links.module.css';
+import {
+  Wrapper,
+  LinksStyled,
+  LinksContacts,
+  Column,
+  LinkIcon,
+  LinkIconImg,
+  LinkIconText,
+  LinksSeparator,
+  LinkList,
+  CompanyLinks,
+  CompanyLinksTitle,
+  CompanyLinksItem,
+  CompanyLinksText,
+} from './styles';
 
 const Links: React.FC = () => {
   return (
-    <section className={styles.footerLinks}>
-      <div className={styles.links}>
-        <div className={styles.linksContacts}>
-          <div className={styles.col}>
-            <a href="#url" className={styles.contactIcon}>
-              <img
-                className={styles.contactIconImg}
-                src="assets/ico-attendance.svg"
-                alt="Atendimento"
-              />
-              <p className={styles.contactIconTxt}>Atendimento</p>
-            </a>
-            <a href="#url" className={styles.contactIcon}>
-              <img
-                className={styles.contactIconImg}
+    <Wrapper>
+      <LinksStyled>
+        <LinksContacts>
+          <Column>
+            <LinkIcon href="#url">
+              <LinkIconImg src="assets/ico-attendance.svg" alt="Atendimento" />
+              <LinkIconText>Atendimento</LinkIconText>
+            </LinkIcon>
+            <LinkIcon href="#url">
+              <LinkIconImg
                 src="assets/ico-faq.svg"
                 alt="Perguntas Frequentes"
               />
-              <p className={styles.contactIconTxt}>Perguntas Frequentes</p>
-            </a>
-          </div>
-          <div className={styles.col}>
-            <a href="#url" className={styles.contactIcon}>
-              <img
-                className={styles.contactIconImg}
+              <LinkIconText>Perguntas Frequentes</LinkIconText>
+            </LinkIcon>
+          </Column>
+          <Column>
+            <LinkIcon href="#url">
+              <LinkIconImg
                 src="assets/ico-invoice-and-statement.svg"
                 alt="Fatura e Extrato"
               />
-              <p className={styles.contactIconTxt}>Fatura e Extrato</p>
-            </a>
-            <a href="#url" className={styles.contactIcon}>
-              <img
-                className={styles.contactIconImg}
+              <LinkIconText>Fatura e Extrato</LinkIconText>
+            </LinkIcon>
+            <LinkIcon href="#url">
+              <LinkIconImg
                 src="assets/ico-work-with-us.svg"
                 alt="Trabalhe Conosco"
               />
-              <p className={styles.contactIconTxt}>Trabalhe Conosco</p>
-            </a>
-          </div>
-        </div>
-        <hr className={styles.linksSeparator} />
-        <ul className={styles.linksList}>
-          <li className={styles.companyLinks}>
-            <h3 className={styles.companyLinksTitle}>Cartão Riachuelo</h3>
+              <LinkIconText>Trabalhe Conosco</LinkIconText>
+            </LinkIcon>
+          </Column>
+        </LinksContacts>
+        <LinksSeparator />
+        <LinkList>
+          <CompanyLinks>
+            <CompanyLinksTitle>Cartão Riachuelo</CompanyLinksTitle>
             <ul>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Midway Financeira
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+                </CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Saiba como adquirir
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+                </CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Veja sua fatura e extrato
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+                </CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Buscando quitar suas dívidas?
-                </a>
-              </li>
+                </CompanyLinksText>
+              </CompanyLinksItem>
             </ul>
-          </li>
-          <li className={styles.companyLinks}>
-            <h3 className={styles.companyLinksTitle}>Sobre a Riachuelo</h3>
+          </CompanyLinks>
+
+          <CompanyLinks>
+            <CompanyLinksTitle>Sobre a Riachuelo</CompanyLinksTitle>
             <ul>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
-                  A Empresa
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">A Empresa</CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Portal de Fornecedores
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+                </CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Relação com Investidores
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+                </CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Assessoria de Imprensa
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+                </CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Trabalhe Conosco
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+                </CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Programa Jovem Aprendiz
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+                </CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Cadastro de Startups
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
-                  Mapa do Site
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
-                  Guide Shop
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+                </CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">Mapa do Site</CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">Guide Shop</CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Venda na Riachuelo Marketplace
-                </a>
-              </li>
+                </CompanyLinksText>
+              </CompanyLinksItem>
             </ul>
-          </li>
-          <li className={styles.companyLinks}>
-            <h3 className={styles.companyLinksTitle}>Moda que Transforma</h3>
+          </CompanyLinks>
+
+          <CompanyLinks>
+            <CompanyLinksTitle>Moda que Transforma</CompanyLinksTitle>
             <ul>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
-                  Na prática
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
-                  Entre Costuras
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">Na prática</CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">Entre Costuras</CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Jeans Mais Transparente
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
-                  Ações Covid-19
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
-                  Free Free
-                </a>
-              </li>
+                </CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">Ações Covid-19</CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">Free Free</CompanyLinksText>
+              </CompanyLinksItem>
             </ul>
-          </li>
-          <li className={styles.companyLinks}>
-            <h3 className={styles.companyLinksTitle}>Ajuda</h3>
+          </CompanyLinks>
+
+          <CompanyLinks>
+            <CompanyLinksTitle>Ajuda</CompanyLinksTitle>
             <ul>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
-                  Atendimento
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">Atendimento</CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Perguntas Frequentes
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+                </CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Trocas e Devoluções
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+                </CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Portal da Privacidade
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+                </CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Política de Privacidade
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+                </CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Termos e Condições de Uso
-                </a>
-              </li>
-              <li className={styles.companyLinksItem}>
-                <a className={styles.companyLinksTxt} href="#url">
+                </CompanyLinksText>
+              </CompanyLinksItem>
+              <CompanyLinksItem>
+                <CompanyLinksText href="#url">
                   Regras e Resultados de Sorteios
-                </a>
-              </li>
+                </CompanyLinksText>
+              </CompanyLinksItem>
             </ul>
-          </li>
-        </ul>
-      </div>
-    </section>
+          </CompanyLinks>
+        </LinkList>
+      </LinksStyled>
+    </Wrapper>
   );
 };
 

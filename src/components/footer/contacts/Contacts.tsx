@@ -1,42 +1,39 @@
 import React from 'react';
-import styles from './Contacts.module.css';
+import {
+  Wrapper,
+  Contact,
+  ContactInfo,
+  ContactInput,
+  ContactButton,
+  ContactButtonText,
+  ContactForm,
+  ContactMessage,
+  ContactApps,
+  ContactImage,
+} from './styles';
 
 const Contacts: React.FC = () => {
   return (
-    <section className={styles.footerContact}>
-      <div className={styles.contact}>
-        <p className={styles.contactInfo}>
-          Receba ofertas e novidades por e-mail
-        </p>
-        <form className={styles.form}>
-          <input
-            className={styles.contactInput}
-            type="email"
-            placeholder="Digite aqui seu e-mail"
-          />
-          <button className={styles.contactBtn} type="submit">
-            <span className={styles.contactBtnTxt}>Cadastrar</span>
-          </button>
-        </form>
-        <p className={styles.contactMsg}>Baixe nosso App</p>
-        <div className={styles.apps}>
+    <Wrapper>
+      <Contact>
+        <ContactInfo>Receba ofertas e novidades por e-mail</ContactInfo>
+        <ContactForm>
+          <ContactInput type="email" placeholder="Digite aqui seu e-mail" />
+          <ContactButton type="submit">
+            <ContactButtonText>Cadastrar</ContactButtonText>
+          </ContactButton>
+        </ContactForm>
+        <ContactMessage>Baixe nosso App</ContactMessage>
+        <ContactApps>
           <a href="#url">
-            <img
-              className={styles.contactImg}
-              src="assets/google-play.webp"
-              alt="Google Play"
-            />
+            <ContactImage src="assets/google-play.webp" alt="Google Play" />
           </a>
           <a href="#url">
-            <img
-              className={styles.contactImg}
-              src="assets/app-store.webp"
-              alt="App Store"
-            />
+            <ContactImage src="assets/app-store.webp" alt="App Store" />
           </a>
-        </div>
-      </div>
-    </section>
+        </ContactApps>
+      </Contact>
+    </Wrapper>
   );
 };
 

@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from './Credits.module.css';
+import { Wrapper, CreditsBottom, CopyrightTxt, CopyrightStamp } from './styles';
 
 const Credits: React.FC = () => {
   return (
-    <section className={styles.credits}>
-      <div className={styles.creditsBottom}>
-        <div className={styles.copyright}>
-          <p className={styles.copyrightTxt}>
+    <Wrapper>
+      <CreditsBottom>
+        <div>
+          <CopyrightTxt>
             © Copyright 2017 - 2019. Todos os direitos reservados. Lojas
             Riachuelo S/A. Rua Landri Sales, 1.070, G02 Anexo B, Guarulhos - SP
             - Brasil
@@ -34,13 +34,13 @@ const Credits: React.FC = () => {
             Em caso de divergência de valores entre a página do produto e a
             Sacola de Compras, a Riachuelo se reserva a garantir o valor exibido
             na Sacola de Compras.
-          </p>
+          </CopyrightTxt>
         </div>
-        <div className={styles.copyrightStamp}>
+        <CopyrightStamp>
           <img src="assets/ra1000.webp" alt="" />
-        </div>
-      </div>
-    </section>
+        </CopyrightStamp>
+      </CreditsBottom>
+    </Wrapper>
   );
 };
 
