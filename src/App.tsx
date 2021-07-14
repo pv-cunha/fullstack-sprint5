@@ -1,19 +1,22 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import Router from './routes';
 import { GlobalStyle } from './GlobalStyle';
 import Header from './components/header/Header';
-import Products from './pages/Products';
 import Footer from './components/footer/Footer';
 import AppProvider from './context';
 
 const App = () => {
   return (
-    <AppProvider>
-      <GlobalStyle />
-      <Header />
-      <Products />
-      <Footer />
-    </AppProvider>
+    <BrowserRouter>
+      <AppProvider>
+        <GlobalStyle />
+        <Header />
+        <Router />
+        <Footer />
+      </AppProvider>
+    </BrowserRouter>
   );
 };
 
