@@ -3,22 +3,21 @@ import { useProducts } from '../../../context/ProductsContext';
 import { Input, InputSVG, Wrapper } from './styles';
 
 const Searchbar: React.FC = () => {
-  const { filtered, filterProducts, clearFilter } = useProducts();
-
-  const text = React.useRef<HTMLInputElement | null>(null);
+  const { filterProducts, clearFilter } = useProducts();
+  const [text, setText] = React.useState<string>('');
 
   React.useEffect(() => {
-    if (filtered === null && text.current !== null) {
-      text.current.value = '';
-    }
-  }, [filtered]);
-
-  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    if (text.current && text.current.value !== null) {
-      filterProducts(target.value);
+    if (text !== '') {
+      filterProducts(text);
     } else {
       clearFilter();
     }
+
+    // eslint-disable-next-line
+  }, [text]);
+
+  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    setText(target.value);
   };
 
   return (
@@ -31,7 +30,7 @@ const Searchbar: React.FC = () => {
         id="searchbar"
         type="search"
         placeholder="O que você está procurando?"
-        ref={text}
+        value={text}
         onChange={handleChange}
       />
     </Wrapper>

@@ -28,7 +28,6 @@ const Product: React.FC = () => {
   );
 
   const sizesModel = [{ size: 4 }, { size: 6 }, { size: 8 }, { size: 10 }];
-  const [sizes, setSizes] = React.useState(sizesModel);
   const [size, setSize] = React.useState<number>();
 
   React.useEffect(() => {
@@ -56,7 +55,7 @@ const Product: React.FC = () => {
   return (
     <Wrapper className={`animeLeft container`}>
       <ImageContainer>
-        {product.image && (
+        {product?.image && (
           <img
             src={`${window.location.origin}/${product.image}`}
             alt={product.name}
@@ -65,10 +64,10 @@ const Product: React.FC = () => {
       </ImageContainer>
 
       <Content>
-        <h2>{product.name}</h2>
+        <h2>{product?.name}</h2>
         <p>Selecionar tamanho: {size}</p>
         <Size>
-          {sizes.map((s) => (
+          {sizesModel.map((s) => (
             <SelectSizes
               key={s.size}
               size={s.size}

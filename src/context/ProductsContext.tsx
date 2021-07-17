@@ -133,4 +133,4 @@ const ProductsProvider: React.FC = ({ children }) => {
   );
 };
 
-export { ProductsProvider, useProducts };
+export { ProductsProvider, useProducts, ProductsContext };

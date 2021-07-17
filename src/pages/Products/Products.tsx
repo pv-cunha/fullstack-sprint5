@@ -4,11 +4,13 @@ import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import Filter from '../../components/filter/Filter';
 import ProductItem from '../../components/productItem/ProductItem';
 import Loading from '../../components/loading/Loading';
-import { useProducts } from '../../context/ProductsContext';
+import { ProductsContext } from '../../context/ProductsContext';
 import { useCategories } from '../../context/CategoriesContext';
 
 const Products: React.FC = () => {
-  const { products, filtered, filters, loading } = useProducts();
+  // const { products, filtered, filters, loading } = useProducts();
+  const { products, filtered, filters, loading } =
+    React.useContext(ProductsContext);
   const { current } = useCategories();
 
   return (

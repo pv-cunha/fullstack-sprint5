@@ -23,12 +23,21 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage --watchAll false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/pages/**/*.tsx",
+      "src/components/**/*.tsx",
+      "src/context/*.tsx",
+      "!src/context/index.tsx"
     ]
   },
   "browserslist": {
@@ -44,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react-hooks": "^7.0.1",
     "@types/react-router-dom": "^5.1.8",
     "@types/styled-components": "^5.1.11",
     "@types/uuid": "^8.3.1"

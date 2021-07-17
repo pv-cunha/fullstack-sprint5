@@ -5,6 +5,7 @@ import Alert from '../components/alert/Alert';
 interface AlertContextData {
   addAlert: (messages: Omit<AlertMessage, 'id'>) => void;
   removeAlert: (id: string) => void;
+  alerts: AlertMessage[];
 }
 
 export interface AlertMessage {
@@ -16,16 +17,6 @@ export interface AlertMessage {
 const AlertContext = React.createContext<AlertContextData>(
   {} as AlertContextData,
 );
-
-const useAlert = () => {
-  const context = React.useContext(AlertContext);
-
-  if (!context) {
-    throw new Error('useToast must be used within a AlertProvider !');
-  }
-
-  return context;
-};
 
 const AlertProvider: React.FC = ({ children }) => {
   const [alerts, setAlerts] = React.useState<AlertMessage[]>([]);
@@ -44,16 +35,22 @@ const AlertProvider: React.FC = ({ children }) => {
     [],
   );
 
-  const removeAlert = React.useCallback((id) => {
+  const removeAlert = React.useCallback((id: string) => {
     setAlerts((state) => state.filter((message) => message.id !== id));
   }, []);
 
   return (
-    <AlertContext.Provider value={{ addAlert, removeAlert }}>
+    <AlertContext.Provider value={{ addAlert, removeAlert, alerts }}>
       {children}
       <Alert alertMessages={alerts} />
     </AlertContext.Provider>
   );
+};
+
+const useAlert = () => {
+  const context = React.useContext(AlertContext);
+
+  return context;
 };
 
 export { AlertProvider, useAlert };

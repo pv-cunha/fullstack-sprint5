@@ -37,7 +37,7 @@ const Credits: React.FC = () => {
           </CopyrightTxt>
         </div>
         <CopyrightStamp>
-          <img src="assets/ra1000.webp" alt="" />
+          <img src="assets/ra1000.webp" alt="Check" />
         </CopyrightStamp>
       </CreditsBottom>
     </Wrapper>

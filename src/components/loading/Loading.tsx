@@ -4,7 +4,7 @@ import { Overlay, Spinner } from './styles';
 const Loading: React.FC = () => {
   return (
     <Overlay>
-      <Spinner></Spinner>
+      <Spinner data-testid="loading-spinner"></Spinner>
     </Overlay>
   );
 };

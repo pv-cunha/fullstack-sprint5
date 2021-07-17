@@ -14,8 +14,16 @@ const SizeOption: React.FC<SizeOptionProps> = ({
 }) => {
   const selected: boolean = size === selectedSize;
 
+  const handleClick = () => {
+    setSize(size);
+  };
+
   return (
-    <StyledSizeOption selected={selected} onClick={() => setSize(size)}>
+    <StyledSizeOption
+      selected={selected}
+      data-testid="button-test"
+      onClick={handleClick}
+    >
       {size}
     </StyledSizeOption>
   );
