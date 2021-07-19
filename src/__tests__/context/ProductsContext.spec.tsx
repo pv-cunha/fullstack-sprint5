@@ -74,4 +74,55 @@ describe('Products hook context', () => {
       },
     ]);
   });
+
+  it('should be able to filtered', async () => {
+    apiMock.onGet('data/products.json').reply(200, apiResponse);
+
+    const { result, waitForNextUpdate } = renderHook(() => useProducts(), {
+      wrapper: ProductsProvider,
+    });
+
+    act(() => {
+      result.current.getProducts('data/products.json');
+    });
+
+    await waitForNextUpdate();
+
+    act(() => {
+      result.current.filterProducts('desc');
+    });
+
+    expect(result.current.filtered).toStrictEqual([
+      {
+        sku: 1,
+        image: 'image-test.webp',
+        name: 'description-test',
+        price: 'price-test',
+      },
+    ]);
+  });
+
+  it('should be able to clear filter', async () => {
+    apiMock.onGet('data/products.json').reply(200, apiResponse);
+
+    const { result, waitForNextUpdate } = renderHook(() => useProducts(), {
+      wrapper: ProductsProvider,
+    });
+
+    act(() => {
+      result.current.getProducts('data/products.json');
+    });
+
+    await waitForNextUpdate();
+
+    act(() => {
+      result.current.filterProducts('desc');
+    });
+
+    act(() => {
+      result.current.clearFilter();
+    });
+
+    expect(result.current.filtered).toStrictEqual([]);
+  });
 });
