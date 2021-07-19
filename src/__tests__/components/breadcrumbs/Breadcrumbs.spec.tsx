@@ -12,7 +12,7 @@ jest.mock('../../../context/CategoriesContext', () => {
   return {
     useCategories: () => ({
       current: mockedBreadcrumbs,
-      getCurrent: () => new Promise<void>((resolve) => mockedBreadcrumbs),
+      getCurrent: () => new Promise<void>(() => mockedBreadcrumbs),
     }),
   };
 });

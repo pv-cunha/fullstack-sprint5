@@ -13,7 +13,7 @@ jest.mock('../../../context/ProductsContext', () => {
   return {
     useProducts: () => ({
       filters: mockedFilters,
-      getFilters: () => new Promise((resolve) => mockedFilters),
+      getFilters: () => new Promise(() => mockedFilters),
     }),
   };
 });

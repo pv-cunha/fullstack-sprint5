@@ -6,7 +6,7 @@ describe('SelectSizes component', () => {
     setSize: jest.fn(),
   });
 
-  const mockedSize: number = 4;
+  const mockedSize = 4;
 
   it('should be showing a size', () => {
     const { getByText } = render(

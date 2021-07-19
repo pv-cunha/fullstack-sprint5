@@ -7,7 +7,7 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import AppProvider from './context';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <BrowserRouter>
       <AppProvider>
