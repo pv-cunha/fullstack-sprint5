@@ -45,7 +45,9 @@ const CategoriesProvider: React.FC = ({ children }) => {
     let json;
 
     try {
-      response = await fetch('http://localhost:3000/data/categories.json');
+      response = await fetch(
+        `${process.env.REACT_APP_API_URL}/data/categories.json`,
+      );
 
       if (!response.ok) {
         throw new Error('Erro ao carregar os dados das categorias !');
@@ -65,7 +67,9 @@ const CategoriesProvider: React.FC = ({ children }) => {
     let json;
 
     try {
-      response = await fetch('http://localhost:3000/data/categories.json');
+      response = await fetch(
+        `${process.env.REACT_APP_API_URL}/data/categories.json`,
+      );
 
       if (!response.ok) {
         throw new Error('Erro ao carregar os dados das breadcrumbs!');

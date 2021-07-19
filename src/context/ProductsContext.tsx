@@ -60,7 +60,9 @@ const ProductsProvider: React.FC = ({ children }) => {
     try {
       setLoading(true);
 
-      response = await fetch('http://localhost:3000/data/products.json');
+      response = await fetch(
+        `${process.env.REACT_APP_API_URL}/data/products.json`,
+      );
 
       if (!response.ok) {
         throw new Error('Erro ao carregar os dados dos produtos !');
@@ -82,7 +84,9 @@ const ProductsProvider: React.FC = ({ children }) => {
     let json;
 
     try {
-      response = await fetch('http://localhost:3000/data/products.json');
+      response = await fetch(
+        `${process.env.REACT_APP_API_URL}/data/products.json`,
+      );
 
       if (!response.ok) {
         throw new Error('Erro ao carregar os dados dos filtros !');
