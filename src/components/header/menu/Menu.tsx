@@ -4,7 +4,13 @@ import MenuItem from './menuItem/MenuItem';
 import { useCategories } from '../../../context/CategoriesContext';
 
 const Menu: React.FC = () => {
-  const { categories } = useCategories();
+  const { categories, getCategories } = useCategories();
+
+  React.useEffect(() => {
+    getCategories();
+
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <MenuNav>

@@ -29,6 +29,8 @@ const mockedProductsValue = {
   filtered: [],
   filterProducts: jest.fn(),
   clearFilter: jest.fn(),
+  getProducts: () => new Promise<void>((resolve) => mockedProducts),
+  getFilters: () => new Promise<void>((resolve) => mockedFilters),
 };
 
 const mockedFilteredValue = {
@@ -38,6 +40,8 @@ const mockedFilteredValue = {
   filtered: mockedProducts,
   filterProducts: jest.fn(),
   clearFilter: jest.fn(),
+  getProducts: () => new Promise<void>((resolve) => mockedProducts),
+  getFilters: () => new Promise<void>((resolve) => mockedFilters),
 };
 
 jest.mock('react-router-dom', () => {
@@ -48,6 +52,7 @@ jest.mock('../../../context/CategoriesContext', () => {
   return {
     useCategories: () => ({
       current: mockedBreadcrumbs,
+      getCurrent: () => jest.fn(),
     }),
   };
 });
@@ -95,6 +100,8 @@ describe('Products page', () => {
           filtered: [],
           filterProducts: jest.fn(),
           clearFilter: jest.fn(),
+          getProducts: () => new Promise<void>((resolve) => mockedProducts),
+          getFilters: () => new Promise<void>((resolve) => mockedFilters),
         }}
       >
         <Products />

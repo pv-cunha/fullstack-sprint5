@@ -5,6 +5,10 @@ export const Wrapper = styled.section`
   align-items: center;
 
   width: 100%;
+
+  @media (max-width: 48rem) {
+    flex-direction: column;
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -26,14 +30,6 @@ export const Details = styled.div`
 
   width: 100%;
   max-width: 32rem;
-
-  h2 {
-    width: 100%;
-    max-width: 26rem;
-
-    font-size: 1.7rem;
-    text-align: center;
-  }
 `;
 
 export const Content = styled.div`
@@ -41,6 +37,12 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  h2 {
+    width: 100%;
+    font-size: 1.7rem;
+    text-align: center;
+  }
 `;
 
 export const Size = styled.div`
@@ -55,7 +57,7 @@ export const Card = styled.div`
   align-items: center;
 
   padding: 2rem;
-  margin-top: 1rem;
+  margin: 2rem 0;
 
   width: 100%;
   max-width: 26rem;
@@ -76,7 +78,7 @@ const colors = {
 
 export const Button = styled.button`
   width: 100%;
-  padding: 0.8rem 1.1rem;
+  padding: 0.8rem 1rem;
   margin-top: 1rem;
 
   border: none;
@@ -90,4 +92,14 @@ export const Button = styled.button`
   background: ${({ color }) => (color === 'red' ? colors.red : colors.green)};
 
   cursor: pointer;
+
+  transition: opacity 0.1s ease-in;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  a {
+    color: #fff;
+  }
 `;

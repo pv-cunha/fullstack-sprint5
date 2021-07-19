@@ -25,6 +25,8 @@ interface ProductsContextData {
   filters: FiltersData[];
   filtered: FilteredData[];
   loading: boolean;
+  getProducts: () => Promise<void>;
+  getFilters: () => Promise<void>;
   filterProducts: (text: string) => void;
   clearFilter: () => void;
 }
@@ -50,14 +52,6 @@ const ProductsProvider: React.FC = ({ children }) => {
   const [filters, setFilters] = React.useState<FiltersData[]>([]);
   const [filtered, setFiltered] = React.useState<FilteredData[]>([]);
   const [loading, setLoading] = React.useState<boolean>(false);
-
-  React.useEffect(() => {
-    getProducts();
-
-    getFilters();
-
-    // eslint-disable-next-line
-  }, []);
 
   const getProducts = React.useCallback(async () => {
     let response;
@@ -124,6 +118,8 @@ const ProductsProvider: React.FC = ({ children }) => {
         filters,
         filtered,
         loading,
+        getProducts,
+        getFilters,
         filterProducts,
         clearFilter,
       }}

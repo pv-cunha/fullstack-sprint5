@@ -37,11 +37,16 @@ jest.mock('../../../context/ProductsContext', () => {
   return {
     useProducts: () => ({
       products: mockedProducts,
+      getProducts: jest.fn(),
     }),
   };
 });
 
 describe('Product page', () => {
+  beforeEach(() => {
+    window.scrollTo = jest.fn();
+  });
+
   it('should be showing the product page', async () => {
     const { getByText, getByAltText } = render(<Product />);
 

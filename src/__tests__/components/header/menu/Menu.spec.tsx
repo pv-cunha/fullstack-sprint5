@@ -28,6 +28,7 @@ jest.mock('../../../../context/CategoriesContext', () => {
   return {
     useCategories: () => ({
       categories: mockedCategories,
+      getCategories: () => new Promise((resolve) => mockedCategories),
     }),
   };
 });

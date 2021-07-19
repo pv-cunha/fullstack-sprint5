@@ -16,6 +16,8 @@ interface CurrentData {
 interface CategoriesContextData {
   categories: CategoriesData[];
   current: CurrentData[];
+  getCategories: () => Promise<void>;
+  getCurrent: () => Promise<void>;
 }
 
 const CategoriesContext = React.createContext<CategoriesContextData>(
@@ -37,14 +39,6 @@ const CategoriesProvider: React.FC = ({ children }) => {
 
   const [categories, setCategories] = React.useState<CategoriesData[]>([]);
   const [current, setCurrent] = React.useState<CurrentData[]>([]);
-
-  React.useEffect(() => {
-    getCategories();
-
-    getCurrent();
-
-    // eslint-disable-next-line
-  }, []);
 
   const getCategories = React.useCallback(async () => {
     let response;
@@ -91,6 +85,8 @@ const CategoriesProvider: React.FC = ({ children }) => {
       value={{
         categories,
         current,
+        getCategories,
+        getCurrent,
       }}
     >
       {children}

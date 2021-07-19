@@ -17,7 +17,7 @@ interface ProductItemData {
 }
 
 const Product: React.FC = () => {
-  const { products } = useProducts();
+  const { products, getProducts } = useProducts();
   const { addAlert } = useAlert();
 
   const { id } = useParams<ParamsProps>();
@@ -31,10 +31,15 @@ const Product: React.FC = () => {
   const [size, setSize] = React.useState<number>();
 
   React.useEffect(() => {
+    getProducts();
+
+    // eslint-disable-next-line
+  }, []);
+
+  React.useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'smooth',
     });
 
     if (products) {

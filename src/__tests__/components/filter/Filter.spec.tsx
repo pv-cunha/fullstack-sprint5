@@ -1,34 +1,28 @@
 import { render } from '@testing-library/react';
 import Filter from '../../../components/filter/Filter';
+import {} from '../../../context/ProductsContext';
+
+const mockedFilters = [
+  {
+    id: 'test-id',
+    label: 'test-label',
+  },
+];
+
+jest.mock('../../../context/ProductsContext', () => {
+  return {
+    useProducts: () => ({
+      filters: mockedFilters,
+      getFilters: () => new Promise((resolve) => mockedFilters),
+    }),
+  };
+});
 
 describe('Filter component', () => {
   it('Should be showing the filters', () => {
-    const filters = [
-      {
-        id: 'size',
-        label: 'Tamanho',
-      },
-      {
-        id: 'color',
-        label: 'Cor',
-      },
-      {
-        id: 'department',
-        label: 'Departamento',
-      },
-      {
-        id: 'category',
-        label: 'Categoria',
-      },
-      {
-        id: 'sleeve',
-        label: 'Manga',
-      },
-    ];
+    const { getByText } = render(<Filter />);
 
-    const { getByText } = render(<Filter filters={filters} />);
-
-    const elementText = getByText('Categoria');
+    const elementText = getByText('test-label');
 
     expect(elementText).toBeInTheDocument();
   });

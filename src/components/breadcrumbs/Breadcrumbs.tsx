@@ -1,29 +1,29 @@
 import React from 'react';
 import { Wrapper, BreadcrumbNav, BreadcrumbList } from './styles';
 import BreadcrumbsItem from './breadcrumbsItems/BreadcrumbsItem';
+import { useCategories } from '../../context/CategoriesContext';
 
-interface BreadCrumbsData {
-  breadcrumbs: CurrentData[];
-}
+const Breadcrumbs: React.FC = () => {
+  const { current, getCurrent } = useCategories();
 
-interface CurrentData {
-  id: string;
-  name: string;
-  link: string;
-}
+  React.useEffect(() => {
+    getCurrent();
 
-const Breadcrumbs: React.FC<BreadCrumbsData> = ({ breadcrumbs }) => {
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <Wrapper className="container">
       <BreadcrumbNav>
         <BreadcrumbList>
-          {breadcrumbs.map((breadcrumb, index) => (
-            <BreadcrumbsItem
-              key={breadcrumb.id}
-              breadcrumb={breadcrumb}
-              active={breadcrumbs.length - 1 === index}
-            />
-          ))}
+          {current &&
+            current.map((breadcrumb, index) => (
+              <BreadcrumbsItem
+                key={breadcrumb.id}
+                breadcrumb={breadcrumb}
+                active={current.length - 1 === index}
+              />
+            ))}
         </BreadcrumbList>
       </BreadcrumbNav>
     </Wrapper>

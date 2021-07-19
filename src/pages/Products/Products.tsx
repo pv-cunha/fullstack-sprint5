@@ -5,21 +5,25 @@ import Filter from '../../components/filter/Filter';
 import ProductItem from '../../components/productItem/ProductItem';
 import Loading from '../../components/loading/Loading';
 import { ProductsContext } from '../../context/ProductsContext';
-import { useCategories } from '../../context/CategoriesContext';
 
 const Products: React.FC = () => {
   // const { products, filtered, filters, loading } = useProducts();
-  const { products, filtered, filters, loading } =
+  const { products, filtered, loading, getProducts } =
     React.useContext(ProductsContext);
-  const { current } = useCategories();
+
+  React.useEffect(() => {
+    getProducts();
+
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <main className="container animeLeft">
-      {current && <Breadcrumbs breadcrumbs={current} />}
+      <Breadcrumbs />
 
       {loading && <Loading />}
 
-      {filters && <Filter filters={filters} />}
+      <Filter />
 
       <section>
         <ProductsList>

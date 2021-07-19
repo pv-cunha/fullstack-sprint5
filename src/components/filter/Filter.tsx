@@ -1,24 +1,24 @@
 import React from 'react';
-
 import { FilterSection, FilterList } from './styles';
 import FilterItem from './filterItem/FilterItem';
+import { useProducts } from '../../context/ProductsContext';
 
-interface FiltersData {
-  filters: FilterData[];
-}
+const Filter: React.FC = () => {
+  const { filters, getFilters } = useProducts();
 
-interface FilterData {
-  id: string;
-  label: string;
-}
+  React.useEffect(() => {
+    getFilters();
 
-const Filter: React.FC<FiltersData> = ({ filters }) => {
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <FilterSection className={`container`}>
       <FilterList>
-        {filters.map((filter) => (
-          <FilterItem key={filter.id} label={filter.label} />
-        ))}
+        {filters &&
+          filters.map((filter) => (
+            <FilterItem key={filter.id} label={filter.label} />
+          ))}
       </FilterList>
     </FilterSection>
   );

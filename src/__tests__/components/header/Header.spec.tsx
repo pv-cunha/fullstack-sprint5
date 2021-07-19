@@ -1,7 +1,22 @@
 import { render } from '@testing-library/react';
 import Header from '../../../components/header/Header';
 
-const clearFilter = jest.fn();
+jest.mock('../../../context/ProductsContext', () => {
+  return {
+    useProducts: () => ({
+      filterProducts: jest.fn(),
+      clearFilter: jest.fn(),
+    }),
+  };
+});
+
+jest.mock('../../../context/CategoriesContext', () => {
+  return {
+    useCategories: () => ({
+      getCategories: jest.fn(),
+    }),
+  };
+});
 
 jest.mock('react-router-dom', () => {
   return { Link: ({ children }: { children: React.ReactNode }) => children };
