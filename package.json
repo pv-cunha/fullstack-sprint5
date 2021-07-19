@@ -25,7 +25,8 @@
     "test": "react-scripts test",
     "test:coverage": "react-scripts test --coverage --watchAll false",
     "eject": "react-scripts eject",
-    "lint": "eslint . --ext .tsx"
+    "lint": "eslint . --ext .tsx",
+    "prettier": "prettier --config .prettierrc.json --write ."
   },
   "eslintConfig": {
     "extends": [
@@ -60,6 +61,9 @@
     "@types/uuid": "^8.3.1",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",
-    "eslint": "^7.31.0"
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.2"
   }
 }
