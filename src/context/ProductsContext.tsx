@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAlert } from './AlertContext';
+import api from '../services/api';
 
 interface ProductsData {
   sku: string;
@@ -25,8 +26,8 @@ interface ProductsContextData {
   filters: FiltersData[];
   filtered: FilteredData[];
   loading: boolean;
-  getProducts: () => Promise<void>;
-  getFilters: () => Promise<void>;
+  getProducts: (url: string) => Promise<void>;
+  getFilters: (url: string) => Promise<void>;
   filterProducts: (text: string) => void;
   clearFilter: () => void;
 }
@@ -37,10 +38,6 @@ const ProductsContext = React.createContext<ProductsContextData>(
 
 const useProducts = () => {
   const context = React.useContext(ProductsContext);
-
-  if (!context) {
-    throw new Error('useToast must be used within a ProductsProvider !');
-  }
 
   return context;
 };
@@ -53,53 +50,35 @@ const ProductsProvider: React.FC = ({ children }) => {
   const [filtered, setFiltered] = React.useState<FilteredData[]>([]);
   const [loading, setLoading] = React.useState<boolean>(false);
 
-  const getProducts = React.useCallback(async () => {
-    let response;
-    let json;
+  const getProducts = React.useCallback(
+    async (url: string) => {
+      try {
+        setLoading(true);
 
-    try {
-      setLoading(true);
+        const response = await api.get(url);
 
-      response = await fetch(
-        `${process.env.REACT_APP_API_URL}/data/products.json`,
-      );
-
-      if (!response.ok) {
-        throw new Error('Erro ao carregar os dados dos produtos !');
+        setProducts(response.data.products);
+      } catch (err) {
+        addAlert({ text: err.message });
+      } finally {
+        setLoading(false);
       }
+    },
+    [addAlert],
+  );
 
-      json = await response.json();
-    } catch (err) {
-      json = null;
-      addAlert({ text: err.message });
-    } finally {
-      setLoading(false);
+  const getFilters = React.useCallback(
+    async (url: string) => {
+      try {
+        const response = await api.get(url);
 
-      setProducts(json.products);
-    }
-  }, [addAlert]);
-
-  const getFilters = React.useCallback(async () => {
-    let response;
-    let json;
-
-    try {
-      response = await fetch(
-        `${process.env.REACT_APP_API_URL}/data/products.json`,
-      );
-
-      if (!response.ok) {
-        throw new Error('Erro ao carregar os dados dos filtros !');
+        setFilters(response.data.filters);
+      } catch (err) {
+        addAlert({ text: err.message });
       }
-
-      json = await response.json();
-    } catch (err) {
-      json = null;
-      addAlert({ text: err.message });
-    } finally {
-      setFilters(json.filters);
-    }
-  }, [addAlert]);
+    },
+    [addAlert],
+  );
 
   const filterProducts = (text: string) => {
     const filter = products.filter((product) => {

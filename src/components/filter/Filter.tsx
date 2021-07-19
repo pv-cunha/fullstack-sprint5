@@ -7,7 +7,7 @@ const Filter: React.FC = () => {
   const { filters, getFilters } = useProducts();
 
   React.useEffect(() => {
-    getFilters();
+    getFilters('data/products.json');
 
     // eslint-disable-next-line
   }, []);

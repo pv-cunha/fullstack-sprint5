@@ -31,7 +31,7 @@ const Product: React.FC = () => {
   const [size, setSize] = React.useState<number>();
 
   React.useEffect(() => {
-    getProducts();
+    getProducts('data/products.json');
 
     // eslint-disable-next-line
   }, []);

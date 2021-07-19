@@ -7,7 +7,7 @@ const Breadcrumbs: React.FC = () => {
   const { current, getCurrent } = useCategories();
 
   React.useEffect(() => {
-    getCurrent();
+    getCurrent('/data/categories.json');
 
     // eslint-disable-next-line
   }, []);

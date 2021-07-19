@@ -7,7 +7,7 @@ const Menu: React.FC = () => {
   const { categories, getCategories } = useCategories();
 
   React.useEffect(() => {
-    getCategories();
+    getCategories('/data/categories.json');
 
     // eslint-disable-next-line
   }, []);

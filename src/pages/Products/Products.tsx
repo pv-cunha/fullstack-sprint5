@@ -12,7 +12,7 @@ const Products: React.FC = () => {
     React.useContext(ProductsContext);
 
   React.useEffect(() => {
-    getProducts();
+    getProducts('data/products.json');
 
     // eslint-disable-next-line
   }, []);

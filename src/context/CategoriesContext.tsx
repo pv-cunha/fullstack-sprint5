@@ -1,4 +1,5 @@
 import React from 'react';
+import api from '../services/api';
 import { useAlert } from './AlertContext';
 
 interface CategoriesData {
@@ -16,8 +17,8 @@ interface CurrentData {
 interface CategoriesContextData {
   categories: CategoriesData[];
   current: CurrentData[];
-  getCategories: () => Promise<void>;
-  getCurrent: () => Promise<void>;
+  getCategories: (url: string) => Promise<void>;
+  getCurrent: (url: string) => Promise<void>;
 }
 
 const CategoriesContext = React.createContext<CategoriesContextData>(
@@ -26,10 +27,6 @@ const CategoriesContext = React.createContext<CategoriesContextData>(
 
 const useCategories = () => {
   const context = React.useContext(CategoriesContext);
-
-  if (!context) {
-    throw new Error('useToast must be used within a CategoriesProvider !');
-  }
 
   return context;
 };
@@ -40,49 +37,31 @@ const CategoriesProvider: React.FC = ({ children }) => {
   const [categories, setCategories] = React.useState<CategoriesData[]>([]);
   const [current, setCurrent] = React.useState<CurrentData[]>([]);
 
-  const getCategories = React.useCallback(async () => {
-    let response;
-    let json;
+  const getCategories = React.useCallback(
+    async (url: string) => {
+      try {
+        const response = await api.get(url);
 
-    try {
-      response = await fetch(
-        `${process.env.REACT_APP_API_URL}/data/categories.json`,
-      );
-
-      if (!response.ok) {
-        throw new Error('Erro ao carregar os dados das categorias !');
+        setCategories(response.data.all);
+      } catch (err) {
+        addAlert({ text: err.message });
       }
+    },
+    [addAlert],
+  );
 
-      json = await response.json();
-    } catch (err) {
-      json = null;
-      addAlert({ text: err.message });
-    } finally {
-      setCategories(json.all);
-    }
-  }, [addAlert]);
+  const getCurrent = React.useCallback(
+    async (url: string) => {
+      try {
+        const response = await api.get(url);
 
-  const getCurrent = React.useCallback(async () => {
-    let response;
-    let json;
-
-    try {
-      response = await fetch(
-        `${process.env.REACT_APP_API_URL}/data/categories.json`,
-      );
-
-      if (!response.ok) {
-        throw new Error('Erro ao carregar os dados das breadcrumbs!');
+        setCurrent(response.data.current);
+      } catch (err) {
+        addAlert({ text: err.message });
       }
-
-      json = await response.json();
-    } catch (err) {
-      json = null;
-      addAlert({ text: err.message });
-    } finally {
-      setCurrent(json.current);
-    }
-  }, [addAlert]);
+    },
+    [addAlert],
+  );
 
   return (
     <CategoriesContext.Provider
