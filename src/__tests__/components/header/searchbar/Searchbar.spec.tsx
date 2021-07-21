@@ -11,7 +11,7 @@ jest.mock('../../../../context/ProductsContext', () => {
 });
 
 describe('Searchbar component', () => {
-  it('should be using the searchbar', () => {
+  it('should be able to use the searchbar', () => {
     const { getByPlaceholderText } = render(<Searchbar />);
 
     const inputElement = getByPlaceholderText('O que você está procurando?');
@@ -23,7 +23,7 @@ describe('Searchbar component', () => {
     expect(inputElement).toHaveDisplayValue('');
   });
 
-  it('should be changing states', async () => {
+  it('should be able to change states', async () => {
     const { getByPlaceholderText } = render(<Searchbar />);
 
     const inputElement = getByPlaceholderText('O que você está procurando?');

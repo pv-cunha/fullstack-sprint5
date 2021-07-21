@@ -34,6 +34,10 @@ jest.mock('../../context/AlertContext', () => {
 });
 
 describe('Categories hook context', () => {
+  beforeEach(() => {
+    apiMock.reset();
+  });
+
   it('should be able to get categories', async () => {
     apiMock.onGet('/data/categories.json').reply(200, apiResponse);
 
@@ -76,5 +80,31 @@ describe('Categories hook context', () => {
         name: 'name-test',
       },
     ]);
+  });
+
+  it('should not be able to get categories', async () => {
+    apiMock.onGet('data/categories.json').timeout();
+
+    const { result } = renderHook(() => useCategories(), {
+      wrapper: CategoriesProvider,
+    });
+    act(() => {
+      result.current.getCategories('data/categories.json');
+    });
+
+    expect(result.current.categories).toEqual([]);
+  });
+
+  it('should not be able to get current', async () => {
+    apiMock.onGet('data/categories.json').timeout();
+
+    const { result } = renderHook(() => useCategories(), {
+      wrapper: CategoriesProvider,
+    });
+    act(() => {
+      result.current.getCurrent('data/categories.json');
+    });
+
+    expect(result.current.current).toEqual([]);
   });
 });

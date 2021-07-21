@@ -58,10 +58,10 @@ const ProductsProvider: React.FC = ({ children }) => {
         const response = await api.get(url);
 
         setProducts(response.data.products);
+
+        setLoading(false);
       } catch (err) {
         addAlert({ text: err.message });
-      } finally {
-        setLoading(false);
       }
     },
     [addAlert],

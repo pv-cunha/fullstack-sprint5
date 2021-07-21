@@ -31,6 +31,10 @@ jest.mock('../../context/AlertContext', () => {
 });
 
 describe('Products hook context', () => {
+  beforeEach(() => {
+    apiMock.reset();
+  });
+
   it('should be able to get products', async () => {
     apiMock.onGet('data/products.json').reply(200, apiResponse);
 
@@ -75,7 +79,7 @@ describe('Products hook context', () => {
     ]);
   });
 
-  it('should be able to filtered', async () => {
+  it('should be able to filter by name', async () => {
     apiMock.onGet('data/products.json').reply(200, apiResponse);
 
     const { result, waitForNextUpdate } = renderHook(() => useProducts(), {
@@ -90,6 +94,33 @@ describe('Products hook context', () => {
 
     act(() => {
       result.current.filterProducts('desc');
+    });
+
+    expect(result.current.filtered).toStrictEqual([
+      {
+        sku: 1,
+        image: 'image-test.webp',
+        name: 'description-test',
+        price: 'price-test',
+      },
+    ]);
+  });
+
+  it('should be able to filter by price', async () => {
+    apiMock.onGet('data/products.json').reply(200, apiResponse);
+
+    const { result, waitForNextUpdate } = renderHook(() => useProducts(), {
+      wrapper: ProductsProvider,
+    });
+
+    act(() => {
+      result.current.getProducts('data/products.json');
+    });
+
+    await waitForNextUpdate();
+
+    act(() => {
+      result.current.filterProducts('price');
     });
 
     expect(result.current.filtered).toStrictEqual([
@@ -124,5 +155,31 @@ describe('Products hook context', () => {
     });
 
     expect(result.current.filtered).toStrictEqual([]);
+  });
+
+  it('should not be able to get products', async () => {
+    apiMock.onGet('data/products.json').timeout();
+
+    const { result } = renderHook(() => useProducts(), {
+      wrapper: ProductsProvider,
+    });
+    act(() => {
+      result.current.getProducts('data/products.json');
+    });
+
+    expect(result.current.products).toEqual([]);
+  });
+
+  it('should not be able to get filters', async () => {
+    apiMock.onGet('data/products.json').timeout();
+
+    const { result } = renderHook(() => useProducts(), {
+      wrapper: ProductsProvider,
+    });
+    act(() => {
+      result.current.getFilters('data/products.json');
+    });
+
+    expect(result.current.filters).toEqual([]);
   });
 });
